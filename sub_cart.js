@@ -28,23 +28,26 @@ window.onload = setupCart;
 function setupCart() {
       var addButtons = document.getElementsByClassName('addButton');
 
-      for (var i = 0; i <= addButtons.length; i++) {
-            addEventListener('click', addItem);
+      for (var i = 0; i < addButtons.length; i++) {
+            addButtons[i].addEventListener('click', addItem);
       }
 }
 
 // step 5
-function addItem() {
-      var foodItem = e.nextElementSibling;
+function addItem(e) {
+      var foodItem = e.target.nextElementSibling;
       console.log(foodItem);
-      var foodID = foodItem.target.id;
+      var foodID = e.target.nextElementSibling.id;
       var foodDescription = foodItem.cloneNode(true);
       var cartBox = document.getElementById('cart');
       var duplicateOrder = false;
 
-      for (var i = 0; i < cartBox.childNodes.length; i++) {
-            if (cartBox.childNodes[i].target.id = 'foodID') {
+
+      var cartBoxChildren = cartBox.childNodes;
+      for (var i = 0; i < cartBoxChildren.length; i++) {
+            if (cartBoxChildren[i].id = 'foodID') {
                   cartBox.firstElementChild++;
+                  break;
             }
       }
 
